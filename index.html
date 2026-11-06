@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIOFLOW | Urban Intelligence Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="guide.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header>
+    <a class="brand" href="#"><span class="brand-mark">B</span><span data-brand>BIOFLOW</span></a>
+    <div class="live-pill"><i></i> DIGITAL TWIN LIVE</div>
+    <nav><a href="#twin">Twin</a><a href="#modules">Modules</a><a href="#pulse">P.U.L.S.E.</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">URBAN TRAFFIC OPTIMISATION / SIMULATION LAB</p>
+        <h1>Make the city<br><em>move with thought.</em></h1>
+        <p class="lede">BIOFLOW connects environmental sensing, bio-inspired intelligence, adaptive roads and emergency priorities into one living urban network.</p>
+        <div class="hero-actions"><button class="primary" id="runHero">Run live simulation <span>→</span></button><button class="quiet" id="brandToggle">Switch to BioTecFlow</button></div>
+        <div class="trust"><span>●</span> A transparent computational model — simulated outcomes, not field-validated predictions.</div>
+      </div>
+      <div class="hero-orbit" aria-hidden="true">
+        <div class="orbit orbit1"></div><div class="orbit orbit2"></div><div class="orbital-node n1"></div><div class="orbital-node n2"></div><div class="orbital-node n3"></div>
+        <div class="core"><small>P.U.L.S.E.</small><strong>01</strong><span>INTELLIGENT<br>NETWORK</span></div>
+      </div>
+    </section>
+
+    <section id="twin" class="twin-section">
+      <div class="section-heading"><div><p class="eyebrow">LIVE OPERATIONAL MODEL</p><h2>Virtual traffic <em>digital twin.</em></h2></div><p>Explore a responsive city network. Change a condition, then observe how coordinated agents adapt signals, routes and available capacity.</p></div>
+      <div class="sim-shell">
+        <div class="sim-topbar"><div class="sim-title"><span class="status-dot"></span> PULSE CITY / SECTOR 08</div><div class="sim-actions"><button id="pauseBtn">❚❚ Pause</button><button id="resetBtn">↻ Reset</button><span id="simClock">08:42:16</span></div></div>
+        <div class="sim-grid">
+          <div class="canvas-wrap"><canvas id="cityCanvas" width="920" height="580"></canvas><div class="canvas-label label-a">NORTH GATE</div><div class="canvas-label label-b">CIVIC DISTRICT</div><div class="canvas-label label-c">EAST LINK</div><div class="map-legend"><span><b class="l-road"></b> Road</span><span><b class="l-route"></b> Active route</span><span><b class="l-aqi"></b> AQI monitor</span></div></div>
+          <aside class="command-panel">
+            <div class="panel-head"><span>COMMAND LAYER</span><small id="scenarioName">Morning peak</small></div>
+            <label>SCENARIO<select id="scenario"><option value="peak">Morning peak</option><option value="closure">Major road closure</option><option value="emergency">Emergency priority</option><option value="pollution">Poor air quality</option><option value="event">Stadium release</option></select></label>
+            <label>ROUTING STRATEGY<select id="algorithm"><option value="pulse">P.U.L.S.E. balanced</option><option value="physarum">Physarum network</option><option value="shortest">Shortest distance</option><option value="emission">Emissions aware</option><option value="ant">Ant colony swarm</option></select></label>
+            <div class="sliders"><label>Traffic demand <output id="demandOut">72%</output><input id="demand" type="range" min="25" max="100" value="72"></label><label>Environmental priority <output id="ecoOut">58%</output><input id="eco" type="range" min="0" max="100" value="58"></label><label>Agent coordination <output id="coordOut">84%</output><input id="coord" type="range" min="0" max="100" value="84"></label></div>
+            <div class="toggles"><button class="toggle active" data-toggle="signals"><i></i> Adaptive signals</button><button class="toggle active" data-toggle="twin"><i></i> Predictive twin</button><button class="toggle" data-toggle="lanes"><i></i> Reversible lane</button></div>
+            <button id="incidentBtn" class="incident">+ Simulate road incident</button>
+          </aside>
+        </div>
+        <section class="map-guide" aria-live="polite"><div class="map-guide-intro"><span class="guide-badge">HOW TO READ THIS MAP</span><h3>What you are seeing</h3><p>This is a simplified animated city network, not a real city. It shows a modelled decision, not a real-world prediction.</p></div><div class="map-key"><div><b class="key-road"></b><span><strong>Grey roads</strong>available routes</span></div><div><b class="key-active"></b><span><strong>Green route</strong>preferred by the selected model</span></div><div><b class="key-vehicle"></b><span><strong>Moving blocks</strong>modelled vehicles</span></div><div><b class="key-signal"></b><span><strong>Junction dots</strong>changing signal state</span></div><div><b class="key-sensor"></b><span><strong>Cyan dots</strong>environmental/AQI nodes</span></div><div><b class="key-incident"></b><span><strong>Orange marker</strong>simulated incident</span></div></div><div class="model-explainer"><div class="explainer-top"><span id="guidePillar">U / BIO-INSPIRED</span><strong id="guideTitle">Physarum route optimiser</strong></div><p id="guideText">The green corridor shows paths the model is reinforcing because their simulated travel cost is lower. As conditions change, inefficient paths lose preference.</p><div class="change-row"><span>ON THE MAP, LOOK FOR</span><b id="guideLook">green routes shifting toward lower-congestion roads</b></div></div></section>
+        <div class="metric-strip"><div><small>NETWORK SPEED</small><strong id="speedMetric">31.8 <b>km/h</b></strong><span id="speedDelta">↑ 12.4% vs static</span></div><div><small>MEAN DELAY</small><strong id="delayMetric">46 <b>sec</b></strong><span id="delayDelta">↓ 18 sec vs static</span></div><div><small>EST. IDLING</small><strong id="idleMetric">118 <b>min/h</b></strong><span id="idleDelta">↓ 21% modeled</span></div><div><small>LOCAL AQI</small><strong id="aqiMetric">84 <b>MODERATE</b></strong><span id="aqiDelta">sensor model</span></div><div><small>THROUGHPUT</small><strong id="throughMetric">1,240 <b>veh/h</b></strong><span id="throughDelta">↑ 16.1% vs static</span></div></div>
+      </div>
+    </section>
+
+    <section id="modules" class="modules-section">
+      <div class="section-heading"><div><p class="eyebrow">NINE CONNECTED MODELS</p><h2>One network. <em>Many ways to adapt.</em></h2></div><p>Each model is a testable simulation component. Select a card to bring its logic into the live twin.</p></div>
+      <div class="module-grid" id="moduleGrid">
+        <button class="module-card selected" data-module="physarum"><span class="module-num">01</span><span class="module-icon">⌁</span><h3>Physarum route optimiser</h3><p>Reinforces efficient paths and lets weak routes fade as network conditions change.</p><span class="tag">U / BIO-INSPIRED</span></button>
+        <button class="module-card" data-module="shortest"><span class="module-num">02</span><span class="module-icon">↗</span><h3>Route & emissions engine</h3><p>Balances distance with congestion, idling, stop-start movement and vehicle load.</p><span class="tag">U / ECO-ROUTING</span></button>
+        <button class="module-card" data-module="ant"><span class="module-num">03</span><span class="module-icon">✣</span><h3>Ant-colony swarm</h3><p>Uses simulated pheromone reinforcement to test collective route discovery.</p><span class="tag">U / SWARM</span></button>
+        <button class="module-card" data-module="agents"><span class="module-num">04</span><span class="module-icon">◎</span><h3>Multi-agent coordination</h3><p>Junction agents exchange queue state and make decentralised signal decisions.</p><span class="tag">S / CONNECTED</span></button>
+        <button class="module-card" data-module="twin"><span class="module-num">05</span><span class="module-icon">◫</span><h3>Predictive digital twin</h3><p>Tests likely route and signal outcomes before a coordinated response is applied.</p><span class="tag">S / PREDICTIVE</span></button>
+        <button class="module-card" data-module="closure"><span class="module-num">06</span><span class="module-icon">⟁</span><h3>Self-healing response</h3><p>Detects closures, evaluates spare capacity, redistributes traffic, then recovers.</p><span class="tag">S / RESILIENT</span></button>
+        <button class="module-card" data-module="emergency"><span class="module-num">07</span><span class="module-icon">✚</span><h3>Emergency green corridor</h3><p>Forecasts emergency arrival and prepares a safe, temporary green progression.</p><span class="tag">E / PRIORITY</span></button>
+        <button class="module-card" data-module="reservation"><span class="module-num">08</span><span class="module-icon">◇</span><h3>Intersection reservation</h3><p>Allocates modeled conflict-free crossing windows for connected vehicles.</p><span class="tag">L / FUTURE READY</span></button>
+        <button class="module-card" data-module="lanes"><span class="module-num">09</span><span class="module-icon">⇄</span><h3>Reversible-lane allocation</h3><p>Switches modelled lane direction with demand, signage and controlled entry.</p><span class="tag">L / ADAPTIVE</span></button>
+      </div>
+    </section>
+
+    <section class="analytics">
+      <div class="section-heading"><div><p class="eyebrow">SIMULATION READOUT</p><h2>Compare decisions, <em>not promises.</em></h2></div><p>Relative indicators are computed from this model’s current parameters. They are intended for prototype evaluation.</p></div>
+      <div class="analytics-grid"><div class="chart-card"><div class="card-title">Queue pressure <span>LAST 12 MIN</span></div><canvas id="queueChart" width="600" height="235"></canvas><div class="chart-key"><span><i class="key-base"></i>Static control</span><span><i class="key-flow"></i>BIOFLOW response</span></div></div><div class="decision-card"><div class="card-title">Network decision trace <span>LIVE</span></div><div id="decisionTrace" class="trace"></div><div class="decision-footer"><span>MODEL CONFIDENCE</span><strong id="confidence">0.82</strong><small>scenario completeness</small></div></div></div>
+    </section>
+
+    <section id="pulse" class="pulse-section"><div class="pulse-intro"><p class="eyebrow">P.U.L.S.E. FRAMEWORK</p><h2>Five pillars.<br><em>One intelligent urban network.</em></h2><p>BIOFLOW does not treat roads, signals and environment as separate systems. Its pillars create a coordinated loop of sensing, decision and adaptation.</p></div><div class="pillar-list"><article><span>P</span><div><h3>Photosynthetic & Environmental Infrastructure</h3><p>Environmental intelligence stations, AQI sensing and testable microalgae infrastructure concepts.</p></div></article><article><span>U</span><div><h3>Urban Bio-Inspired Intelligence</h3><p>Physarum, ant-colony and emissions-aware computation for adaptive network routes.</p></div></article><article><span>L</span><div><h3>Living & Adaptive Road Infrastructure</h3><p>Dynamic capacity, reversible lanes and future connected-vehicle reservations.</p></div></article><article><span>S</span><div><h3>Smart & Synchronised Coordination</h3><p>Adaptive signals, junction communication and predictive digital twin testing.</p></div></article><article><span>E</span><div><h3>Ecological & Emergency Mobility</h3><p>Pollution-aware choices and safe emergency movement through coordinated corridors.</p></div></article></div></section>
+  </main>
+  <footer><div class="brand"><span class="brand-mark">B</span><span data-brand>BIOFLOW</span></div><p>Sense the city. Understand its movement. Optimise its flow.</p><small>Prototype simulation interface · Results are modeled, not real-world validated.</small></footer>
+  <script src="app.js"></script>
+</body>
+</html>
