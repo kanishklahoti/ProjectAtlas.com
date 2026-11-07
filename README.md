@@ -1,4 +1,4 @@
-# BIOFLOW — Urban Intelligence Simulator
+# PROJECT ATLAS — Urban Intelligence Simulator
 
 An interactive browser prototype for the BIOFLOW P.U.L.S.E. urban traffic optimisation framework.
 
